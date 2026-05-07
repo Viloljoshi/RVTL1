@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vilol Joshi - Curriculum Vitae</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* EU-recruiter optimised CV
+     ATS-friendly, single column, clean headers, quantified bullets,
+     standard EU sections. Two A4 pages max. */
+  :root{
+    --ink:#0a0a0a; --ink-2:#1f2937; --muted:#5a5a5a;
+    --line:#cfcfcf; --line-soft:#ececec;
+    --accent:#0666EB; --accent-soft:#eaf1ff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{
+    background:#fff; color:var(--ink);
+    font-family:'Inter',-apple-system,Arial,sans-serif;
+    font-size:10pt; line-height:1.45;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  @page{ size:A4; margin:14mm 14mm 12mm 14mm; }
+  .page{ max-width:182mm; margin:0 auto; }
+  h1,h2,h3,h4{ font-family:'Inter Tight','Inter',sans-serif; letter-spacing:-0.012em; }
+  a{ color:var(--accent); text-decoration:none; }
+
+  /* HEADER */
+  .head{ padding-bottom:8px; border-bottom:1.5px solid var(--ink); }
+  .head h1{ font-size:24pt; font-weight:700; letter-spacing:-0.025em; color:var(--ink); }
+  .head .role-line{
+    margin-top:3px; font-size:10.5pt; color:var(--ink-2); font-weight:500;
+  }
+  .head .role-line .accent{ color:var(--accent); font-weight:600; }
+  .contact-row{
+    margin-top:6px; font-size:9.4pt; color:var(--ink-2);
+    display:flex; flex-wrap:wrap; gap:0 14px; line-height:1.55;
+  }
+  .contact-row a{ color:var(--accent); }
+  .contact-row .sep{ color:var(--line); }
+  .contact-row .loc{ font-weight:600; color:var(--ink); }
+
+  /* SECTIONS */
+  section{ margin-top:11px; }
+  .sec-h{
+    display:flex; align-items:baseline; justify-content:space-between;
+    border-bottom:1px solid var(--line); padding-bottom:3px; margin-bottom:7px;
+  }
+  .sec-h h2{
+    font-size:10.5pt; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--ink);
+  }
+  .sec-h .sec-tag{ font-size:8pt; color:var(--muted); letter-spacing:0.04em; }
+
+  p.summary{
+    font-size:9.7pt; color:var(--ink-2); line-height:1.55; text-align:justify;
+  }
+  p.summary strong{ color:var(--ink); font-weight:600; }
+
+  /* CORE STRENGTHS (compact) */
+  .strengths{
+    display:grid; grid-template-columns: 1fr 1fr; gap:4px 16px;
+    margin-top:6px; font-size:9.3pt; color:var(--ink-2);
+  }
+  .strengths .row{ padding-left:12px; position:relative; line-height:1.45; }
+  .strengths .row::before{
+    content:""; position:absolute; left:0; top:6px;
+    width:5px; height:5px; background:var(--accent); border-radius:50%;
+  }
+  .strengths .row strong{ color:var(--ink); font-weight:600; }
+
+  /* EXPERIENCE */
+  .role{ margin-top:9px; page-break-inside:avoid; }
+  .role:first-child{ margin-top:0; }
+  .role-row{ display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+  .role h3{ font-size:11pt; font-weight:700; color:var(--ink); }
+  .role .company-loc{ font-size:8.6pt; color:var(--muted); font-style:italic; }
+  .role .title-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-top:1px; gap:8px;
+  }
+  .role .title{ font-size:9.5pt; font-weight:500; color:var(--accent); font-style:italic; }
+  .role .dates{ font-size:8.6pt; color:var(--muted); white-space:nowrap; }
+  .role ul{ list-style:none; margin-top:4px; padding-left:0; }
+  .role li{
+    font-size:9.3pt; color:var(--ink-2); line-height:1.5;
+    padding-left:11px; position:relative; margin-top:2px;
+  }
+  .role li::before{ content:"•"; position:absolute; left:0; color:var(--accent); font-weight:700; }
+  .role li strong{ color:var(--ink); font-weight:600; }
+
+  /* PROJECTS */
+  .proj{ margin-top:6px; page-break-inside:avoid; }
+  .proj h4{ font-size:9.8pt; font-weight:600; color:var(--ink); }
+  .proj h4 .accent{ color:var(--accent); font-weight:500; }
+  .proj p{
+    font-size:9.2pt; color:var(--ink-2); line-height:1.5;
+    margin-top:1px;
+  }
+  .proj p strong{ color:var(--ink); font-weight:600; }
+
+  /* SKILLS */
+  .skills{ display:grid; grid-template-columns: 145px 1fr; gap:3px 12px; }
+  .skills .k{ font-size:9.2pt; font-weight:600; color:var(--ink); }
+  .skills .v{ font-size:9.2pt; color:var(--ink-2); line-height:1.5; }
+
+  /* EDUCATION + CERTS */
+  .edu-row{ display:flex; justify-content:space-between; gap:8px; font-size:9.4pt; }
+  .edu-row .school{ font-weight:600; color:var(--ink); }
+  .edu-row .place{ font-size:8.6pt; color:var(--muted); }
+  .edu-degree{ font-size:9.2pt; color:var(--ink-2); margin-top:1px; }
+
+  .two-col{ display:grid; grid-template-columns: 1fr 1fr; gap:0 18px; }
+  .cert-list{ font-size:9.1pt; color:var(--ink-2); line-height:1.55; }
+  .cert-list .sep{ color:var(--line); margin:0 4px; }
+
+  .lang-table{ font-size:9.3pt; color:var(--ink-2); margin-top:3px; line-height:1.7; }
+  .lang-table strong{ color:var(--ink); }
+  .lang-table .level{
+    display:inline-block; padding:1px 6px; margin-left:2px;
+    font-size:8pt; font-weight:600; color:var(--accent);
+    background:var(--accent-soft); border-radius:3px;
+  }
+
+  /* FOOTER GDPR */
+  .gdpr{
+    margin-top:10px; padding-top:6px; border-top:1px solid var(--line-soft);
+    font-size:7.8pt; color:var(--muted); font-style:italic; text-align:center;
+    line-height:1.4;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="head">
+    <h1>Vilol Joshi</h1>
+    <div class="role-line"><span class="accent">AI Product Manager</span> &middot; Product Owner &middot; Fintech / AML / KYC</div>
+    <div class="contact-row">
+      <span class="loc">Tallinn, Estonia</span>
+      <span class="sep">|</span>
+      <a href="mailto:viloljoshi10@gmail.com">viloljoshi10@gmail.com</a>
+      <span class="sep">|</span>
+      <a href="https://www.linkedin.com/in/viloljoshi" target="_blank">linkedin.com/in/viloljoshi</a>
+      <span class="sep">|</span>
+      <a href="https://viloljoshi.github.io/RVTL1/" target="_blank">AI Product Management Portfolio</a>
+    </div>
+  </header>
+
+  <!-- SUMMARY -->
+  <section>
+    <div class="sec-h"><h2>Professional Summary</h2><span class="sec-tag">Product Owner / Fintech</span></div>
+    <p class="summary">
+      Product Manager with <strong>5+ years</strong> building and scaling fintech and AI-powered products across <strong>compliance, onboarding, AML/KYC, workflow automation, and digital banking</strong>. Proven track record leading cross-functional teams, owning product roadmaps, and delivering measurable business impact through data-driven product execution. Strong background in AML/KYC systems, financial-crime workflows, AI-enabled operations, and platform modernisation within fast-paced regulated environments. Comfortable working hands-on with engineers and presenting roadmap decisions to senior leadership.
+    </p>
+    <div class="strengths">
+      <div class="row"><strong>End-to-end ownership:</strong> discovery, roadmap, launch, scale.</div>
+      <div class="row"><strong>Cross-functional:</strong> Engineering, Design, Compliance, Operations.</div>
+      <div class="row"><strong>ROI-led prioritisation:</strong> feasibility, impact, operational cost.</div>
+      <div class="row"><strong>Regulated by default:</strong> KYC, AML, derivatives, GDPR-aware design.</div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section>
+    <div class="sec-h"><h2>Professional Experience</h2><span class="sec-tag">Reverse chronological</span></div>
+
+    <div class="role">
+      <div class="role-row">
+        <h3>Solytics Partners</h3>
+        <span class="company-loc">Berlin, Germany &amp; Mumbai, India</span>
+      </div>
+      <div class="title-row">
+        <span class="title">Technical AI Product Manager, Nimbus Platform Modernisation</span>
+        <span class="dates">Mar 2025 to Feb 2026</span>
+      </div>
+      <ul>
+        <li>Owned modernisation roadmap for a fintech compliance platform, replacing manual and rule-based workflows with AI-powered automation that reduced compliance review effort by <strong>45%</strong>.</li>
+        <li>Led cross-functional execution across Engineering, Operations and Compliance teams to improve <strong>AML/KYC onboarding workflows</strong> and operational scalability.</li>
+        <li>Defined and launched AI-assisted document processing workflows that accelerated enterprise onboarding and reduced operational rework cycles via confidence-based validation.</li>
+        <li>Partnered with engineers on product requirements, architecture decisions and rollout strategies for <strong>high-volume financial document workflows</strong>.</li>
+        <li>Standardised third-party AML/KYC API integrations, reducing implementation turnaround time by <strong>25%</strong>.</li>
+        <li>Drove adoption of modular AI-enabled workflow tools for underwriting and KYC operations, increasing internal platform usage by <strong>65%</strong>.</li>
+        <li>Presented product demos and solution strategies to enterprise stakeholders, contributing to a <strong>$15M+ sales pipeline</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-row">
+        <h3>Schbang</h3>
+        <span class="company-loc">Mumbai, India</span>
+      </div>
+      <div class="title-row">
+        <span class="title">Technical Product Manager</span>
+        <span class="dates">Oct 2022 to Aug 2024</span>
+      </div>
+      <ul>
+        <li>Owned AI-driven onboarding and compliance workflows processing <strong>50K+ financial documents monthly</strong>, reducing manual operations by <strong>70%</strong>.</li>
+        <li>Led delivery of workflow automation initiatives across Engineering and business stakeholders, improving operational transparency and reducing processing turnaround.</li>
+        <li>Collaborated with UX and Engineering to improve digital banking journeys for products serving <strong>5M+ users</strong>, contributing to <strong>+18% conversion uplift</strong> and <strong>12% churn reduction</strong>.</li>
+        <li>Shifted product delivery from slow-release deployments to <strong>weekly releases</strong>, reducing time-to-market by <strong>34%</strong>.</li>
+        <li>Built and prioritised product backlogs, defined user stories and acceptance criteria, and coordinated agile execution across multiple parallel initiatives.</li>
+        <li>Developed conversational AI prototypes for BFSI clients with structured validation workflows that improved response reliability and user experience.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-row">
+        <h3>Ogilvy</h3>
+        <span class="company-loc">Mumbai, India</span>
+      </div>
+      <div class="title-row">
+        <span class="title">AI Product Manager</span>
+        <span class="dates">Aug 2024 to Mar 2025</span>
+      </div>
+      <ul>
+        <li>Led discovery workshops with global stakeholders to define product requirements, workflows and analytics use cases.</li>
+        <li>Managed backlog prioritisation and release planning for analytics and AI-enabled product initiatives across multiple teams.</li>
+        <li>Partnered with Engineering and UX teams to design scalable analytics dashboards and reporting workflows.</li>
+        <li>Reduced manual reporting effort by <strong>35%</strong> through workflow automation and structured data systems.</li>
+        <li>Supported go-to-market initiatives through client presentations, product demonstrations and technical solution discussions.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-row">
+        <h3>SEB Global Services</h3>
+        <span class="company-loc">Riga, Latvia</span>
+      </div>
+      <div class="title-row">
+        <span class="title">Derivative Operations Specialist</span>
+        <span class="dates">Jun 2019 to Oct 2021</span>
+      </div>
+      <ul>
+        <li>Managed operational workflows in a regulated derivatives environment, improving accuracy and reducing settlement inefficiencies.</li>
+        <li>Automated <strong>150+ operational reporting processes</strong>, saving <strong>40+ hours monthly</strong> and improving consistency.</li>
+        <li>Built strong understanding of financial operations, compliance requirements and risk-sensitive workflows in banking systems.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section>
+    <div class="sec-h"><h2>Selected Projects</h2><span class="sec-tag">Hands-on / Production</span></div>
+
+    <div class="proj">
+      <h4>AI-native B2C Insurance App <span class="accent">(Claims &amp; Onboarding)</span></h4>
+      <p>Owned end-to-end product thinking for a consumer insurance wallet aligned to BIMA Sugam infrastructure: One-Tap Claim Kit, consent-scoped uploads, explainable policy cards (clause-grounded retrieval), and a chat + voice agent for claims, renewals and network search. <strong>+60% perceived helpfulness, +25% complete claim submissions.</strong></p>
+    </div>
+
+    <div class="proj">
+      <h4>LLM Evaluator <span class="accent">(Golden-Dataset Evaluation Platform)</span></h4>
+      <p>Built golden-dataset evaluation framework with exact-match, cosine similarity and LLM-as-judge scoring; introduced repeatable evaluation cycles before deployment and a dashboard for drift and confidence calibration. Replaced ad-hoc testing across model releases.</p>
+    </div>
+
+    <div class="proj">
+      <h4>Autonomous Lead Enrichment <span class="accent">(Human-in-the-Loop Workflow)</span></h4>
+      <p>n8n-based workflow that enriched, scored and drafted outreach for <strong>40 to 80K leads</strong> with structured human review (Claude MCP), automated Gmail draft creation and full audit trail logging. <strong>70% faster lead closures</strong> for SMB customers.</p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <div class="sec-h"><h2>Skills</h2><span class="sec-tag">Product / Fintech / Technical</span></div>
+    <div class="skills">
+      <div class="k">Product Ownership</div>
+      <div class="v">Roadmap definition, backlog prioritisation, user stories &amp; acceptance criteria, OKRs &amp; product metrics, A/B testing, discovery, stakeholder management, Agile / Scrum (CSPO), ROI-based trade-offs.</div>
+
+      <div class="k">Fintech &amp; Compliance</div>
+      <div class="v">AML / KYC workflows, onboarding &amp; identity, financial crime &amp; GRC, US mortgage and credit systems, derivatives operations, model risk management, audit-grade logging, compliance-aware product design, GDPR-aware data handling.</div>
+
+      <div class="k">Technical Acumen</div>
+      <div class="v">Distributed systems literacy, REST APIs, webhooks, event-driven architectures, SQL, Python (working), ETL / ELT, OCR + LLM document intelligence, agentic workflows &amp; HITL, RAG pipelines, AI guardrails &amp; evaluation, n8n / Camunda BPMN, CI/CD, AWS, Azure, GCP.</div>
+
+      <div class="k">Analytics &amp; Tools</div>
+      <div class="v">Power BI, Looker, Google Analytics, experimentation frameworks, Figma, Framer, Miro, Jira, Confluence, Notion, Cursor, Claude Code.</div>
+    </div>
+  </section>
+
+  <!-- EDUCATION + LANGUAGES + CERTS -->
+  <section>
+    <div class="sec-h"><h2>Education, Languages &amp; Certifications</h2><span class="sec-tag">Riga Technical University</span></div>
+    <div class="two-col">
+      <div>
+        <div class="edu-row"><span class="school">Riga Technical University</span><span class="place">Riga, Latvia</span></div>
+        <div class="edu-degree">M.Sc. in Business Informatics Sciences</div>
+
+        <div class="edu-row" style="margin-top:5px;"><span class="school">Riga Technical University</span><span class="place">May 2022</span></div>
+        <div class="edu-degree">B.Sc. in Engineering Economics &amp; Statistics</div>
+
+        <div class="lang-table" style="margin-top:7px;">
+          <strong>Languages (CEFR):</strong><br>
+          English <span class="level">C2</span>
+          &middot; Spanish <span class="level">C1</span>
+          &middot; German <span class="level">B1</span>
+        </div>
+      </div>
+      <div class="cert-list">
+        <strong style="color:var(--ink);">Certifications:</strong><br>
+        Certified Scrum Product Owner (CSPO)<span class="sep">&middot;</span>
+        Certified Business Process Analyst (CIBM, BPMN)<span class="sep">&middot;</span>
+        Google Project Management<span class="sep">&middot;</span>
+        Google Data Analytics<span class="sep">&middot;</span>
+        Product Management, Coursera<span class="sep">&middot;</span>
+        LangChain for LLM Applications<span class="sep">&middot;</span>
+        Vector Databases &amp; RAG Pipelines<span class="sep">&middot;</span>
+        Microsoft Responsible AI<span class="sep">&middot;</span>
+        MLOps Fundamentals, DeepLearning.AI<span class="sep">&middot;</span>
+        AWS Cloud Practitioner.
+      </div>
+    </div>
+  </section>
+
+  <!-- GDPR FOOTER -->
+  <div class="gdpr">
+    I hereby give consent for my personal data included in this CV to be processed for the purpose of recruitment under Regulation (EU) 2016/679 (GDPR). References available on request.
+  </div>
+
+</div>
+</body>
+</html>
